@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 11:56 PM
+-- Generation Time: Feb 25, 2023 at 01:37 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -100,8 +100,7 @@ ALTER TABLE `profile`
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
-  ADD PRIMARY KEY (`publication_id`),
-  ADD UNIQUE KEY `profile_id` (`profile_id`);
+  ADD PRIMARY KEY (`publication_id`);
 
 --
 -- Indexes for table `user`

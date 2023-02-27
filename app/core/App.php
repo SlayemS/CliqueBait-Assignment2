@@ -7,7 +7,7 @@ class App{
 		//this is where we want to route the requests to the appropriate classes/methods
 		// we wish to route requests to /controller/method
 		$request = $this->parseUrl($_GET['url'] ?? '');
-//		var_dump($request);
+		//var_dump($request);
 
 		//default controller and method
 		$controller = 'Main';

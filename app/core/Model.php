@@ -5,7 +5,7 @@ class Model{
 	public $connection;
 	public function __construct(){
 		$host = 'localhost';
-		$dbname = 'webapplication';
+		$dbname = 'cliquebait';
 		$user = 'root';
 		$pass = '';
 		try {
