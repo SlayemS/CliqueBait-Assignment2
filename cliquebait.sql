@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2023 at 01:37 AM
+-- Generation Time: Feb 27, 2023 at 11:57 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -50,6 +50,13 @@ CREATE TABLE `profile` (
   `last_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`) VALUES
+(2, 'Sayem', 'G', 'Shah');
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +84,14 @@ CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(72) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
+(1, 'sayem', '$2y$10$gWdwKeNqcf22H0qWbKpmuO.yIlfuBODCVJuO2CRvahHnOVFFN3IeC'),
+(2, 'tarzan', '$2y$10$F18g3C8fFOHKlfkExx3/y.S5cBzMXkbuUlFnZxXetkQtRrVtTWEw2');
 
 --
 -- Indexes for dumped tables
@@ -123,7 +138,7 @@ ALTER TABLE `publication`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

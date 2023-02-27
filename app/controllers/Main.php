@@ -3,15 +3,12 @@ namespace app\controllers;
 
 class Main extends \app\core\Controller{
 	function index(){
+		//show publication list
 		$this->view('Main/index');
 	}
 
-	function index2(){
-		$this->view('Main/index2');
-	}
+	function followingPublications() {
 
-	function greetings($name = "Carl"){//optional parameter:$name
-		$this->view('Main/greetings', $name);
 	}
 
 	function logUser(){

@@ -1,2 +1,0 @@
-Bob has visited!
-<script>alert('buy my viagra');</script> has visited!

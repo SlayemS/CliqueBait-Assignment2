@@ -31,6 +31,22 @@ class App{
 			unset($request[1]);
 		}
 
+		//access filtering
+		//attribute discovery
+		$reflection = new \ReflectionObject($controller);
+
+		$classAttributes = $reflection->getAttributes();
+		$methodAttributes = $reflection->getMethod($method)->getAttributes();
+
+		$attributes = array_values(array_merge($classAttributes, $methodAttributes));
+
+		//running the attribute class methods
+		foreach ($attributes as $attribute) {
+			$filter = $attribute->newInstance();//making the object of class, e.g., Login
+			if($filter->execute())
+				return;
+		}
+
 		$params = array_values($request);
 
 		//Call the controller method with parameters

@@ -4,7 +4,7 @@ namespace app\controllers;
 class Profile extends \app\core\Controller{
 	public function index(){
 		//view the profile
-		$profile = new \app\models\ProfileInformation();
+		$profile = new \app\models\Profile();
 		$profile = $profile->getByUserId($_SESSION['user_id']);
 		if($profile)
 			$this->view('Profile/index',$profile);
@@ -14,12 +14,12 @@ class Profile extends \app\core\Controller{
 
 	public function create(){
 		if(isset($_POST['action'])){
-			$profile = new \app\models\ProfileInformation();
+			$profile = new \app\models\Profile();
 
 			$profile->user_id = $_SESSION['user_id'];
 			$profile->first_name =  $_POST['first_name'];
-			$profile->last_name =  $_POST['last_name'];
 			$profile->middle_name =  $_POST['middle_name'];
+			$profile->last_name =  $_POST['last_name'];
 
 			$success = $profile->insert();
 			if($success)
@@ -32,14 +32,14 @@ class Profile extends \app\core\Controller{
 	}
 
 	public function edit(){
-		$profile = new \app\models\ProfileInformation();
+		$profile = new \app\models\Profile();
 		$profile = $profile->getByUserId($_SESSION['user_id']);
 
 		if(isset($_POST['action'])){
 
 			$profile->first_name =  $_POST['first_name'];
-			$profile->last_name =  $_POST['last_name'];
 			$profile->middle_name =  $_POST['middle_name'];
+			$profile->last_name =  $_POST['last_name'];
 
 			$success = $profile->update();
 			if($success)
