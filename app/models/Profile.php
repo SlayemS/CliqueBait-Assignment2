@@ -15,6 +15,14 @@ class Profile extends \app\core\Model{
 		return $STH->fetch();
 	}
 
+	public function getPublications(){
+		$SQL = "SELECT * FROM publication WHERE profile_id=:profile_id ORDER BY `timestamp` DESC";
+		$STH = $this->connection->prepare($SQL);
+		$STH->execute(['profile_id'=>$this->profile_id]);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Publication');
+		return $STH->fetchAll();
+	}
+
 	public function insert(){
 		$SQL = "INSERT INTO Profile(user_id,first_name,middle_name,last_name) VALUE (:user_id,:first_name,:middle_name,:last_name)";
 		$STH = $this->connection->prepare($SQL);

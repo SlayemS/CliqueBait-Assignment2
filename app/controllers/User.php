@@ -3,7 +3,8 @@ namespace app\controllers;
 
 class User extends \app\core\Controller{
 
-	public function index(){//login page
+	public function index(){
+	//login page
 		if(isset($_POST['action'])){
 			$user = new \app\models\User();
 			$user = $user->getByUsername($_POST['username']);
@@ -11,7 +12,10 @@ class User extends \app\core\Controller{
 				if(password_verify($_POST['password'], $user->password_hash)){
 					//the user is correct!
 					$_SESSION['user_id'] = $user->user_id;
-					header('location:/User/profile');
+					$_SESSION['username'] = $user->username;
+					$profile = $user->getProfile();
+					$_SESSION['profile_id'] = $profile->profile_id;
+					header('location:/Main/index');
 				}else{
 					header('location:/User/index?error=Bad username/password combination');
 				}
@@ -25,7 +29,15 @@ class User extends \app\core\Controller{
 		}
 	}
 
-	public function register(){//registration page
+	#[\app\filters\Login]
+	public function logout(){
+		//Logout page
+		session_destroy();
+		header('location:/Main/index');
+	}
+
+	public function register(){
+	//registration page
 		if(isset($_POST['action'])){
 			//process the input
 			$user = new \app\models\User();
@@ -33,15 +45,16 @@ class User extends \app\core\Controller{
 			if(!$usercheck){
 				$user->username= $_POST['username'];
 				$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-				$user->insert();
-				header('location:/User/index');
+				$_SESSION['user_id'] = $user->insert();
+				$_SESSION['username'] = $_POST['username'];
+				header('location:/Profile/create?message=Create your profile');
 			}else{
 				header('location:/User/register?error=Username ' . $_POST['username'] . ' already in use. Choose another.');
 			}
 
 		}else{
 			//display the form
-			$this->view('User/register');//TODO: add the new view file
+			$this->view('User/register');
 		}
 	}
 
