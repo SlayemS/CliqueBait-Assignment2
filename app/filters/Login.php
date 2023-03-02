@@ -3,7 +3,7 @@ namespace app\filters;
 
 // defining the Login attribute
 #[\Attribute]
-class Login extends \app\core\Filters {
+class Login extends \app\core\AccessFilter {
 
 	public function execute()
 	{
@@ -11,7 +11,6 @@ class Login extends \app\core\Filters {
 			header('location:/User/index?error=You must login to use that feature.');
 			return true;
 		}
-		
 		return false;
 	}
 }

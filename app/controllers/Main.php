@@ -4,7 +4,10 @@ namespace app\controllers;
 class Main extends \app\core\Controller{
 	function index(){
 		//show publication list
-		$this->view('Main/index');
+		//$this->view('Main/index');
+		$publication = new \app\models\Publication();
+		$publications = $publication->getAll();
+		$this->view('Main/index', $publications);
 	}
 
 	function followingPublications() {

@@ -58,10 +58,10 @@ class User extends \app\core\Controller{
 		}
 	}
 
-	public function logout(){
-		session_destroy();
-		header('location:/User/index');
-	}
+	// public function logout(){
+	// 	session_destroy();
+	// 	header('location:/User/index');
+	// }
 
 	public function profile(){
 		if(!isset($_SESSION['user_id'])){

@@ -10,7 +10,6 @@ class Profile extends \app\core\AccessFilter {
 			header('location:/Profile/create?message=Create your profile');
 			return true;
 		}
-
 		return false;
 	}
 }
