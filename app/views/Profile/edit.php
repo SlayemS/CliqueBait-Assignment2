@@ -1,12 +1,19 @@
-<?php $this->view('shared/header','Edit your Profile'); ?>
+<?php $this->view('shared/header', 'CliqueBait'); ?>
+
+<h1><?=$data ?></h1>
 
 <form action='' method="post">
-	<label>First name:<input type="text" name="first_name" value='<?=$data->first_name?>'></label><br/>
-	<label>Last name:<input type="text" name="last_name" value='<?=$data->last_name?>'></label><br/>
-	<label>Middle name:<input type="text" name="middle_name" value='<?=$data->middle_name?>'></label><br/>
-	<input type="submit" name="action" value="Save changes">
+	<div class="form-group">
+		<label class="col-sm-2 col-form-label">First name:<input class='form-control' type="text" name="first_name" placeholder="first name" value='<?=htmlspecialchars($data->first_name)?>'/></label>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 col-form-label">Middle name:<input class='form-control' type="text" name="middle_name" placeholder="middle name" value='<?=htmlspecialchars($data->middle_name)?>'/></label>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 col-form-label">Last name:<input class='form-control' type="text" name="last_name" placeholder="last name" value='<?=htmlspecialchars($data->last_name)?>'/></label>
+	</div>
+	<input type='submit' name='action' value="Modify" class='btn btn-primary' />
 </form>
-
-<a href='/Profile/index'>Back</a>
+<a href='/Profile/' class='btn btn-secondary'>Cancel</a>
 
 <?php $this->view('shared/footer'); ?>

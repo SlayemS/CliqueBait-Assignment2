@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2023 at 11:57 PM
+-- Generation Time: Mar 03, 2023 at 04:47 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,7 +55,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`) VALUES
-(2, 'Sayem', 'G', 'Shah');
+(4, 'Maxym', 'M', 'Galenko');
 
 -- --------------------------------------------------------
 
@@ -71,6 +71,13 @@ CREATE TABLE `publication` (
   `caption` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `publication`
+--
+
+INSERT INTO `publication` (`publication_id`, `profile_id`, `picture`, `caption`, `timestamp`) VALUES
+(17, 4, '640214309389e.jpg', 'R33', '2023-03-03 15:37:20');
 
 -- --------------------------------------------------------
 
@@ -90,20 +97,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
-(1, 'sayem', '$2y$10$gWdwKeNqcf22H0qWbKpmuO.yIlfuBODCVJuO2CRvahHnOVFFN3IeC'),
-(2, 'tarzan', '$2y$10$F18g3C8fFOHKlfkExx3/y.S5cBzMXkbuUlFnZxXetkQtRrVtTWEw2');
+(4, 'Max', '$2y$10$J5nRgg9Mach9fcpIfnJFpuUHEkvkD8EbR1a3pOCUgNeA/i1QLnJ2S');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `follow`
---
-ALTER TABLE `follow`
-  ADD PRIMARY KEY (`follower_id`,`followed_id`),
-  ADD UNIQUE KEY `follower_id` (`follower_id`),
-  ADD UNIQUE KEY `followed_id` (`followed_id`);
 
 --
 -- Indexes for table `profile`
@@ -115,7 +113,8 @@ ALTER TABLE `profile`
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
-  ADD PRIMARY KEY (`publication_id`);
+  ADD PRIMARY KEY (`publication_id`),
+  ADD UNIQUE KEY `profile_id` (`profile_id`);
 
 --
 -- Indexes for table `user`
@@ -132,24 +131,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `follow`
---
-ALTER TABLE `follow`
-  ADD CONSTRAINT `followed_to_profile` FOREIGN KEY (`followed_id`) REFERENCES `profile` (`user_id`),
-  ADD CONSTRAINT `follower_to_profile` FOREIGN KEY (`follower_id`) REFERENCES `profile` (`user_id`);
 
 --
 -- Constraints for table `profile`

@@ -16,7 +16,7 @@ class Publication extends \app\core\Controller{
 			$publication = new \app\models\Publication();
 			//populate the object
 			$publication->caption = $_POST['caption'];
-			$publication->profile_id = $_SESSION['profile_id'];//FK
+			$publication->profile_id = $_SESSION['user_id'];//FK
 			$filename = $this->saveFile($_FILES['picture']);
 			if($filename){
 				$publication->picture = $filename;
@@ -35,7 +35,7 @@ class Publication extends \app\core\Controller{
 	public function edit($publication_id){
 		$publication = new \app\models\Publication();
 		$publication = $publication->get($publication_id);
-		if(isset($_POST['action']) && $publication->profile_id == $_SESSION['profile_id']){
+		if(isset($_POST['action']) && $publication->profile_id == $_SESSION['user_id']){
 			$publication->caption = $_POST['caption'];
 			$publication->update();
 			header('location:/Profile/index/');
@@ -44,7 +44,7 @@ class Publication extends \app\core\Controller{
 		}
 	}
 
-	public function details($publication_id){//displays the details of a record
+	public function details($publication_id){//detailed view for a record
 		$publication = new \app\models\Publication();
 		$publication = $publication->get($publication_id);
 		$this->view('Publication/details', $publication);
@@ -55,8 +55,7 @@ class Publication extends \app\core\Controller{
 	public function delete($publication_id){
 		$publication = new \app\models\Publication();
 		$publication = $publication->get($publication_id);
-		if($publication->profile_id == $_SESSION['profile_id']){
-			$publication->deleteComments();
+		if($publication->profile_id == $_SESSION['user_id']){
 			unlink("images/$publication->picture");
 			$publication->delete();
 		}

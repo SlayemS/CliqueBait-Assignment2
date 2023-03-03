@@ -6,28 +6,29 @@ class App{
 	private $controller = 'Main';
 	private $method = 'index';
 
-	function __construct(){
+	public function __construct(){
 		//this is where we want to route the requests to the appropriate classes/methods
 		// we wish to route requests to /controller/method
-		$request = $this->parseUrl($_GET['url'] ?? '');
-		//var_dump($request);
 
+		$url = $this->parseUrl($_GET['url'] ?? '');
+		
+		//use the first part to determine the controller class to load
 		//is the requested controller in our controllers folder?
-		if(file_exists('app/controllers/' . $request[0] . '.php'))
-		{
-			$this->controller = $request[0];
-			//$this->controller = new Main();
-			//remove the $request[0] element
-			unset($request[0]);
+		if(isset($url[0])){
+			if(file_exists('app/controllers/' . $url[0] . '.php')){
+				$this->controller = $url[0]; //$this refers to the current object
+			}
+			unset($url[0]);
 		}
-
-		$this->controller = 'app\\controllers\\' . $this->controller;
+		$this->controller = 'app\\controllers\\' . $this->controller; //provide a fully qualified classname
 		$this->controller = new $this->controller;
 
-		if(isset($request[1]) && method_exists($this->controller, $request[1])){
-			$this->method = $request[1];
-			//remove the $request[1] element
-			unset($request[1]);
+		//use the second part to determine the method to run
+
+		if(isset($url[1]) && method_exists($this->controller, $url[1])){
+			$this->method = $url[1];
+			//remove the $url[1] element
+			unset($url[1]);
 		}
 
 		//access filtering
@@ -46,15 +47,18 @@ class App{
 				return;
 		}
 
-		$params = array_values($request);
-
-		//Call the controller method with parameters
-		call_user_func_array([$this->controller, $this->method], $params);
+		//while passing all other parts as arguments
+		//repackage the parameters
+		$params = $url ? array_values($url) : [];
+		call_user_func_array([ $this->controller, $this->method ], $params);
 	}
 
-	function parseUrl($url){
-		return explode('/', trim($url, '/'));
+	public static function parseUrl(){
+		if(isset($_GET['url'])){//get url exists
+			return explode('/', //return parts in an array, separated by /
+				filter_var(	//remove non-URL characters and sequences
+					rtrim($_GET['url'], '/'))
+				,FILTER_SANITIZE_URL);
+		}
 	}
-
-
 }

@@ -2,8 +2,7 @@
 namespace app\core;
 
 class Controller{
-
-	function view($name, $data = []){
+	public function view($name, $data = []){
 		include('app/views/' . $name . '.php');
 	}
 
@@ -12,7 +11,7 @@ class Controller{
 			return false;
 
 		$check = getimagesize($file['tmp_name']);
-		$allowed_types = ['image/jpeg'=>'jpg', 'image/png'=>'png', 'image/gif'=>'gif'];
+		$allowed_types = ['image/jpeg'=>'jpg', 'image/png'=>'png'];
 		if(in_array($check['mime'], array_keys($allowed_types))){
 			 $ext = $allowed_types[$check['mime']];
 			 $filename = uniqid() . ".$ext";
@@ -21,5 +20,4 @@ class Controller{
 		}else
 			return '';
 	}
-
 }

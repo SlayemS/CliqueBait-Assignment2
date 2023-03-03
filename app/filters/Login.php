@@ -1,13 +1,10 @@
 <?php
 namespace app\filters;
-
-// defining the Login attribute
+//defining the Login attribute
 #[\Attribute]
-class Login extends \app\core\AccessFilter {
-
-	public function execute()
-	{
-		if (!isset($_SESSION['user_id'])) {
+class Login extends \app\core\AccessFilter{
+	public function execute(){
+		if(!isset($_SESSION['user_id'])){
 			header('location:/User/index?error=You must login to use that feature.');
 			return true;
 		}

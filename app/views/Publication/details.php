@@ -1,4 +1,4 @@
-<?php $this->view('header', 'CliqueBait'); ?>
+<?php $this->view('shared/header', 'CliqueBait'); ?>
 
 <h1>Publication</h1>
 
@@ -15,4 +15,4 @@ foreach ($comments as $comment) {
 ?>
 <a href='/#publication<?=$data->publication_id?>'>Back</a>
 
-<?php $this->view('footer'); ?>
+<?php $this->view('shared/footer'); ?>

@@ -1,4 +1,4 @@
-<?php $this->view('header', 'CliqueBait'); ?>
+<?php $this->view('shared/header', 'CliqueBait'); ?>
 
 <h1>Edit Publication Caption</h1>
 <form action='' method='post' enctype='multipart/form-data'>
@@ -19,4 +19,4 @@
   }
 }
 </script>
-<?php $this->view('footer'); ?>
+<?php $this->view('shared/footer'); ?>
