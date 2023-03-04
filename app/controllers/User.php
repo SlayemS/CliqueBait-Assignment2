@@ -11,7 +11,7 @@ class User extends \app\core\Controller{
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
 				$profile = $user->getProfile();
-				$_SESSION['profile_id'] = $profile->profile_id;
+				$_SESSION['profile_id'] = $_SESSION['user_id'];
 				header('location:/Main/index');
 			}else{
 				header('location:/User/index?error=Wrong username/password combination!');

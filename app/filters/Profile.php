@@ -1,6 +1,7 @@
 <?php
 namespace app\filters;
 
+// Defining Profile attribute
 #[\Attribute]
 class Profile extends \app\core\AccessFilter{
 	public function execute(){

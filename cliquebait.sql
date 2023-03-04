@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 04:47 PM
+-- Generation Time: Mar 04, 2023 at 10:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,7 +44,7 @@ CREATE TABLE `follow` (
 
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
-  `user_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL
@@ -54,8 +54,9 @@ CREATE TABLE `profile` (
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`) VALUES
-(4, 'Maxym', 'M', 'Galenko');
+INSERT INTO `profile` (`profile_id`, `first_name`, `middle_name`, `last_name`) VALUES
+(4, 'Maxym', 'M', 'Galenko'),
+(5, 'Sayem', '', 'Shah');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,8 @@ CREATE TABLE `publication` (
 --
 
 INSERT INTO `publication` (`publication_id`, `profile_id`, `picture`, `caption`, `timestamp`) VALUES
-(17, 4, '640214309389e.jpg', 'R33', '2023-03-03 15:37:20');
+(17, 4, '640214309389e.jpg', 'R33', '2023-03-03 15:37:20'),
+(18, 5, '6403b1a2a75bb.png', 'Big sale at Mode Sayem. Discounts on winter jackets, t-shirts, jeans and more! Go check it out!', '2023-03-04 21:01:22');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
-(4, 'Max', '$2y$10$J5nRgg9Mach9fcpIfnJFpuUHEkvkD8EbR1a3pOCUgNeA/i1QLnJ2S');
+(4, 'Max', '$2y$10$J5nRgg9Mach9fcpIfnJFpuUHEkvkD8EbR1a3pOCUgNeA/i1QLnJ2S'),
+(5, 'sayem', '$2y$10$Iam6adv78nh9A.PuuxxdmeB/LzaCm2IzDkVzUza/44PzzB4/hGCpG');
 
 --
 -- Indexes for dumped tables
@@ -107,7 +110,7 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD UNIQUE KEY `user_id` (`profile_id`);
 
 --
 -- Indexes for table `publication`
@@ -131,13 +134,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -147,13 +150,13 @@ ALTER TABLE `user`
 -- Constraints for table `profile`
 --
 ALTER TABLE `profile`
-  ADD CONSTRAINT `profile_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `profile_to_user` FOREIGN KEY (`profile_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `publication`
 --
 ALTER TABLE `publication`
-  ADD CONSTRAINT `publication_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`user_id`);
+  ADD CONSTRAINT `publication_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

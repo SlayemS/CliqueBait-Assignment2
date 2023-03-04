@@ -6,13 +6,6 @@
 
 <?php $this->view('Publication/partial',$data); ?>
 
-<?php
-$comments=$data->getComments();
-foreach ($comments as $comment) {
-	$this->view('Comment/partial',$comment);
-}
-
-?>
 <a href='/#publication<?=$data->publication_id?>'>Back</a>
 
 <?php $this->view('shared/footer'); ?>

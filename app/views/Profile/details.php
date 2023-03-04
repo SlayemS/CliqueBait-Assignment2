@@ -3,7 +3,7 @@
 <h1><?=$data ?></h1>
 
 <?php
-if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $data->user_id){
+if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] == $data->profile_id){
 	echo '<a href="/Profile/edit">Edit my profile</a>';
 }
 ?>
