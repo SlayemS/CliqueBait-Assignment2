@@ -12,9 +12,9 @@ class User extends \app\core\Model{
 	}
 
 	public function getProfile(){
-		$SQL = "SELECT * FROM profile WHERE profile_id=:profile_id";
+		$SQL = "SELECT * FROM profile WHERE user_id=:profile_id";
 		$STH = $this->connection->prepare($SQL);
-		$STH->execute(['profile_id'=>$this->profile_id]);
+		$STH->execute(['profile_id'=>$this->user_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Profile');
 		return $STH->fetch();
 	}
