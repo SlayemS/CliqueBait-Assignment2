@@ -37,7 +37,7 @@ class Profile extends \app\core\Model{
 						'middle_name'=>$this->middle_name,
 						'last_name'=>$this->last_name,
 						'profile_id'=>$this->profile_id]);
-		return $this->connection->lastInsertId();
+		return $this->connection->lastInsertId(); // equals to zero for some reason, should return newly inserted profile's profile id
 	}
 
 	public function update(){
