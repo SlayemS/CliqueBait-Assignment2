@@ -16,7 +16,7 @@ class Publication extends \app\core\Controller{
 			$publication = new \app\models\Publication();
 			//populate the object
 			$publication->caption = $_POST['caption'];
-			$publication->profile_id = $_SESSION['user_id'];//FK
+			$publication->profile_id = $_SESSION['user_id'];//FK, might need to change to profile_id
 			$filename = $this->saveFile($_FILES['picture']);
 			if($filename){
 				$publication->picture = $filename;
