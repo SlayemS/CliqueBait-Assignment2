@@ -15,7 +15,7 @@ class Profile extends \app\core\Model{
 	}
 
 	public function get($profile_id){
-		$SQL = "SELECT * FROM profile WHERE user_id=:profile_id";
+		$SQL = "SELECT * FROM profile WHERE profile_id=:profile_id";
 		$STH = $this->connection->prepare($SQL);
 		$STH->execute(['profile_id'=>$profile_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Profile');
@@ -25,7 +25,7 @@ class Profile extends \app\core\Model{
 	public function getPublications(){
 		$SQL = "SELECT * FROM publication WHERE profile_id=:profile_id ORDER BY `timestamp` DESC";
 		$STH = $this->connection->prepare($SQL);
-		$STH->execute(['profile_id'=>$this->user_id]);
+		$STH->execute(['profile_id'=>$this->profile_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Publication');
 		return $STH->fetchAll();
 	}
