@@ -19,7 +19,9 @@ class Follow extends \app\core\Model {
 	}
 
 	public function getPublications() {
-
+		$SQL = 'SELECT publication.* FROM publication, follow WHERE follow.followed_id=:publication.profile_id';
+		$STH = $this->connection->prepare($SQL);
+		$STH->execute(['follow.followed_id'=>$this->publication.profile_id]);
 	}
 
 	public function search($searchTerm){
