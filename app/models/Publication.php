@@ -3,7 +3,6 @@ namespace app\models;
 
 class Publication extends \app\core\Model{
 	public function getAll(){
-		//get all newest first
 		$SQL = "SELECT * FROM publication ORDER BY `timestamp` DESC";
 		$STH = $this->connection->prepare($SQL);
 		$STH->execute();
@@ -12,7 +11,6 @@ class Publication extends \app\core\Model{
 	}
 
 	public function search($searchTerm){
-		//get all newest first
 		$SQL = "SELECT * FROM publication WHERE caption LIKE :searchTerm ORDER BY `timestamp` DESC";
 		$STH = $this->connection->prepare($SQL);
 		$STH->execute(['searchTerm'=>"%$searchTerm%"]);

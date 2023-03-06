@@ -8,6 +8,12 @@ if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] == $data->profile_i
 }
 ?>
 
+<?php
+if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] != $data->profile_id){
+	echo '<input type="submit" name="action" value="Follow" class="btn btn-primary" />';
+}
+?>
+
 <h2>Publications by <?=$data ?></h2>
 <?php
 $publications = $data->getPublications();

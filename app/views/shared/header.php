@@ -26,3 +26,4 @@
 		?>
 		<a href='/Publication/create'><i style="font-size: 2rem;" class='bi-plus-square' title='New publication'></i></a>
 		<a href='/Profile/index'><i style="font-size: 2rem;" class='bi-file-earmark-person' title='My Profile'></i></a>
+		<a href='/Follow/index'><i style="font-size: 2rem;" class='bi-house-door-fill' title='Followed'></i></a>
