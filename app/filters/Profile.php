@@ -3,7 +3,7 @@ namespace app\filters;
 
 // Defining Profile attribute
 #[\Attribute]
-class Profile extends \app\core\AccessFilter{
+class Profile implements \app\core\AccessFilter{
 	public function execute(){
 		if(!isset($_SESSION['profile_id'])){
 			header('location:/Profile/create?message=Create your profile.');
