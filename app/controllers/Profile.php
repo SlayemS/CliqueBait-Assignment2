@@ -49,4 +49,11 @@ class Profile extends \app\core\Controller{
 			$this->view('Profile/create');
 		}
 	}
+
+	public function iFollow($profile_id){
+		$follow = new \app\models\Follow();
+		$follow->follower_id = $_SESSION['user_id'];
+		$follow->followed_id = $profile_id;
+		return $follow->searchIfFollowed();
+	}
 }

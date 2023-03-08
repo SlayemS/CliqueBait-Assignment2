@@ -9,10 +9,12 @@ if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] == $data->profile_i
 ?>
 
 <?php
-if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] != $data->profile_id){
-	echo '<form method="post" action=""><input type="submit" name="action" value="Follow" class="btn btn-primary"/></form>';
+if($this->iFollow($data->profile_id)){
+	echo '<a href=',"/Follow/unfollowUser/$data->profile_id",'>Unfollow</a>';
+	//echo '<form method="post" action=""><input type="submit" name="action" value="Follow" class="btn btn-primary"/></form>';
 }else{
-	echo '<form method="post" action=""><input type="submit" name="action" value="Unfollow" class="btn btn-primary"/></form>';
+	echo '<a href=',"/Follow/followUser/$data->profile_id",'>Follow</a>';
+	//echo '<form method="post" action=""><input type="submit" name="action" value="Unfollow" class="btn btn-primary"/></form>';
 }
 ?>
 

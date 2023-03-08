@@ -5,16 +5,39 @@ class Follow extends \app\core\Controller{
 	#[\app\filters\Login]
 	#[\app\filters\Profile]
 	public function index(){
-		$publication = new \app\models\Follow();
-		$publications = $publication->getPublications();
-		$this->view('Follow/index', $publications);
+		$follow = new \app\models\Follow();
+		$follow->profile_id = $_SESSION['profile_id'];
+		$follow = $follow->getPublications($follow->profile_id);
+		$this->view('Follow/index', $follow);
 	}
 
 	#[\app\filters\Login]
 	#[\app\filters\Profile]
 	public function search(){
-		$publication = new \app\models\Follow();
-		$publications = $publication->search($_GET['search_term']);
-		$this->view('Follow/index', $publications);
+		$follow = new \app\models\Follow();
+		$follow = $follow->search($_GET['search_term']);
+		$this->view('Follow/index', $follow);
 	}
+
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
+	public function followUser($followed_id){
+		$follow = new \app\models\Follow();
+		$follow->follower_id = $_SESSION['user_id'];
+		$follow->followed_id = $followed_id;
+		$follow->followUser();
+		$this->view('Profile/details', $follow);
+	}
+
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
+	public function unfollowUser($followed_id){
+		$follow = new \app\models\Follow();
+		$follow->follower_id = $_SESSION['user_id'];
+		$follow->followed_id = $followed_id;
+		$follow->unfollowUser();
+		$this->view('Profile/details', $follow);
+	}
+
+	
 }
