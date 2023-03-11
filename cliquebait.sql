@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2023 at 02:36 AM
+-- Generation Time: Mar 11, 2023 at 09:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -80,7 +80,7 @@ CREATE TABLE `publication` (
 
 INSERT INTO `publication` (`publication_id`, `profile_id`, `picture`, `caption`, `timestamp`) VALUES
 (17, 4, '640214309389e.jpg', 'R33', '2023-03-03 15:37:20'),
-(18, 5, '6403b1a2a75bb.png', 'Big sale at Mode Sayem. Discounts on winter jackets, t-shirts, jeans and more! Go check it out!', '2023-03-04 21:01:22');
+(23, 5, '640ccc18431ae.jpg', 'Dream Car', '2023-03-11 18:44:40');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,8 @@ ALTER TABLE `profile`
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
-  ADD PRIMARY KEY (`publication_id`);
+  ADD PRIMARY KEY (`publication_id`),
+  ADD KEY `publication_to_profile` (`profile_id`);
 
 --
 -- Indexes for table `user`
@@ -135,7 +136,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user`

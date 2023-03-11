@@ -1,6 +1,7 @@
 <?php $this->view('shared/header', 'CliqueBait'); ?>
 
-<h1><?=$data ?></h1>
+<img class="rounded-circle" src="/images/defaultPFP.png" alt="" style="text-align: right; display:block; margin-top: 25px;" width= '140px'>
+<h1><?=$data?></h1>
 
 <?php
 if(isset($_SESSION['profile_id']) && $_SESSION['profile_id'] == $data->profile_id){
@@ -18,7 +19,7 @@ if($this->iFollow($data->profile_id)){
 }
 ?>
 
-<h2>Publications by <?=$data ?></h2>
+<h2 style="text-align: center;">Posts</h2>
 <?php
 $publications = $data->getPublications();
 foreach ($publications as $publication) {

@@ -7,23 +7,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #c7dbe6;">
 	<div class='container'>
-		<a href='/Main/index'><img src="/images/cliquebait.png" style="max-width: 200px;" /></a>
-		<form action="/Main/search" method="get" style='display:inline-block'>					
-			<div class="input-group">
-			    <input type="search" name='search_term' class="form-control" placeholder="Enter search term" />
-			  <button type="submit" class="btn btn-primary" value="Search"><i class="bi-search"></i></button>
-			</div>
-			
-		</form>
-		<?php
-		if(!isset($_SESSION['user_id'])){?>
-			<a href="/User/index"><i style="font-size: 2rem;" class='bi-door-closed' title="Log in"></i></a>
-<?php	}else{ ?>
-			<a href="/User/logout"><i style="font-size: 2rem;" class='bi-door-open' title='Log out'></i></a>
-<?php	}
-		?>
-		<a href='/Publication/create'><i style="font-size: 2rem;" class='bi-plus-square' title='New publication'></i></a>
-		<a href='/Profile/index'><i style="font-size: 2rem;" class='bi-file-earmark-person' title='My Profile'></i></a>
-		<a href='/Follow/index'><i style="font-size: 2rem;" class='bi-house-door-fill' title='Followed'></i></a>
+		<nav class="navbar navbar-expand-lg" style="background-color: #c7dbe6;">
+		    <div class="container-fluid">
+		      <a href='/Main/index'><img src="/images/cliquebait.png" style="max-width: 200px;" /></a>
+
+		      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+		      </button>
+
+		      <div class="collapse navbar-collapse" id="navbarColor03">
+		        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        	<li>
+				      	<?php if (!isset($_SESSION['user_id'])) {?>
+				      		<a class="nav-link" href="/User/index"><i style="font-size: 2rem;" class='bi-door-closed' title="Log in"></i></a>
+				      	<?php } else { ?>
+				      		<a class="nav-link" href="/User/logout"><i style="font-size: 2rem;" class='bi-door-open' title='Log out'></i></a>
+				      	<?php }
+				      	?>
+		      		</li>
+
+		          <li class="nav-item">
+		            <a class="nav-link" href='/Publication/create'><i style="font-size: 2rem;" class='bi-plus-square' title='New publication'></i></a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" href='/Profile/index'><i style="font-size: 2rem;" class='bi-file-earmark-person' title='My Profile'></i></a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="nav-link" href='/Follow/index'><i style="font-size: 2rem;" class='bi-people-fill' title='Followed'></i></a>
+		          </li>
+		        </ul>
+
+		        <form class="d-flex" action="/Main/search" method="get" role="search">
+		          <input class="form-control me-2" type="search" name='search_term' placeholder="Search" aria-label="Search">
+		          <button class="btn btn-outline-primary" type="submit" value="search">
+		          	<i class="bi-search"></i>
+		          </button>
+		        </form>
+		      </div>
+		    </div>
+		</nav>
+		<hr>
