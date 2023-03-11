@@ -1,4 +1,4 @@
-<div class='jumbotron rounded' id='publication<?=$data->publication_id?>' style='text-align: center; margin: 15px 230px; border: 2px solid #160f29;'>
+<div class='jumbotron rounded' id='publication<?=$data->publication_id?>' style='text-align: center; margin: 15px 230px; border: 2px solid #160f29; background-color: white;'>
 
 	<?php $profile=$data->getProfile(); ?>
 	<p style="margin: 5px 0 8px 30px; text-align: left;">
