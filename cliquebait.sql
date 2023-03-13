@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 09:51 PM
+-- Generation Time: Mar 13, 2023 at 01:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -35,6 +35,13 @@ CREATE TABLE `follow` (
   `followed_id` int(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `follow`
+--
+
+INSERT INTO `follow` (`follower_id`, `followed_id`, `timestamp`) VALUES
+(4, 5, '2023-03-13 00:10:38');
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,7 @@ CREATE TABLE `publication` (
 
 INSERT INTO `publication` (`publication_id`, `profile_id`, `picture`, `caption`, `timestamp`) VALUES
 (17, 4, '640214309389e.jpg', 'R33', '2023-03-03 15:37:20'),
-(23, 5, '640ccc18431ae.jpg', 'Dream Car', '2023-03-11 18:44:40');
+(18, 5, '6403b1a2a75bb.png', 'Big sale at Mode Sayem. Discounts on winter jackets, t-shirts, jeans and more! Go check it out!', '2023-03-04 21:01:22');
 
 -- --------------------------------------------------------
 
@@ -118,8 +125,7 @@ ALTER TABLE `profile`
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
-  ADD PRIMARY KEY (`publication_id`),
-  ADD KEY `publication_to_profile` (`profile_id`);
+  ADD PRIMARY KEY (`publication_id`);
 
 --
 -- Indexes for table `user`
@@ -136,7 +142,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user`

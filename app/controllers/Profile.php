@@ -50,6 +50,8 @@ class Profile extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\Login]
+	#[\app\filters\Profile]
 	public function iFollow($profile_id){
 		$follow = new \app\models\Follow();
 		$follow->follower_id = $_SESSION['user_id'];

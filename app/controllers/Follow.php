@@ -7,7 +7,7 @@ class Follow extends \app\core\Controller{
 	public function index(){
 		$follow = new \app\models\Follow();
 		$follow->profile_id = $_SESSION['profile_id'];
-		$follow = $follow->getPublications($follow->profile_id);
+		$follow->getPublications($follow->profile_id);
 		$this->view('Follow/index', $follow);
 	}
 
@@ -39,5 +39,10 @@ class Follow extends \app\core\Controller{
 		$this->view('Profile/details', $follow);
 	}
 
-	
+	public function viewFollowedPublications($profile_id){
+		$follow = new \app\models\Follow();
+		$follow->profile_id = $profile_id;
+		$follow->getPublications($follow->profile_id);
+		$this->view('Follow/index', $follow);
+	}
 }
