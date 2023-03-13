@@ -39,12 +39,24 @@
 		          </li>
 		        </ul>
 
-		        <form class="d-flex" action="/Main/search" method="get" role="search">
-		          <input class="form-control me-2" type="search" name='search_term' placeholder="Search" aria-label="Search">
-		          <button class="btn btn-outline-primary" type="submit" value="search">
-		          	<i class="bi-search"></i>
-		          </button>
-		        </form>
+		        <?php
+		        $url = $_SERVER['REQUEST_URI'];
+		        $regEx = "/^\/Follow\/(index||search).*$/";
+		        if(isset($_SESSION['profile_id']) && preg_match($regEx, $url) == 1){ ?>
+		        	<form class="d-flex" action="/Follow/search" method="get" role="search">
+			          <input class="form-control me-2" type="search" name='search_term' placeholder="Search Following" aria-label="Search">
+			          <button class="btn btn-outline-primary" type="submit" value="search">
+			          	<i class="bi-search"></i>
+			          </button>
+			        </form>
+		        <?php } else{ ?>
+		        	<form class="d-flex" action="/Main/search" method="get" role="search">
+			          <input class="form-control me-2" type="search" name='search_term' placeholder="Search" aria-label="Search">
+			          <button class="btn btn-outline-primary" type="submit" value="search">
+			          	<i class="bi-search"></i>
+			          </button>
+			        </form>
+		        <?php } ?>
 		      </div>
 		    </div>
 		</nav>

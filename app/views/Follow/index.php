@@ -2,16 +2,8 @@
 
 <h1 style="text-align: center;">Publications by People You Follow</h1>
 <!-- Show publication list -->
-<!-- <?php
-$publications = $data->getPublications();
-foreach ($publications as $publication) {
-	$this->view('Publication/partial', $publication);
-}
-?> -->
-
 <?php
-$publications = $this->viewFollowedPublications($data->profile_id);
-foreach ($publications as $publication) {
+foreach ($data as $publication) {
 	$this->view('Publication/partial', $publication);
 }
 ?>
