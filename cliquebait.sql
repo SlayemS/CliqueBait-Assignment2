@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 07:47 PM
+-- Generation Time: Mar 13, 2023 at 10:06 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,8 @@ CREATE TABLE `follow` (
 INSERT INTO `follow` (`follower_id`, `followed_id`, `timestamp`) VALUES
 (4, 5, '2023-03-13 17:16:56'),
 (7, 4, '2023-03-13 18:40:23'),
-(7, 5, '2023-03-13 18:40:28');
+(7, 5, '2023-03-13 18:40:28'),
+(5, 7, '2023-03-13 19:18:26');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,8 @@ ALTER TABLE `profile`
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
-  ADD PRIMARY KEY (`publication_id`);
+  ADD PRIMARY KEY (`publication_id`),
+  ADD KEY `publication_to_profile` (`profile_id`);
 
 --
 -- Indexes for table `user`

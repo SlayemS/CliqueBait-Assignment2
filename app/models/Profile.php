@@ -48,4 +48,13 @@ class Profile extends \app\core\Model{
 						'last_name'=>$this->last_name,
 						'profile_id'=>$this->profile_id]);
 	}
+
+
+	public function getFollowers() {
+		$SQL = "SELECT `profile`.* FROM profile JOIN `follow` ON `profile`.`profile_id` = `follow`.`follower_id` WHERE followed_id=:followed_id";
+		$STH = $this->connection->prepare($SQL);
+		$STH->execute(['followed_id'=>$this->profile_id]);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Profile');
+		return $STH->fetchAll();
+	}
 }

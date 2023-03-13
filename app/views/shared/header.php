@@ -35,7 +35,7 @@
 		            <a class="nav-link" href='/Profile/index'><i style="font-size: 2rem;" class='bi-file-earmark-person' title='My Profile'></i></a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link" href='/Follow/index'><i style="font-size: 2rem;" class='bi-people-fill' title='Followed'></i></a>
+		            <a class="nav-link" href='/Follow/index'><i style="font-size: 2rem;" class='bi-people-fill' title='Following'></i></a>
 		          </li>
 		        </ul>
 

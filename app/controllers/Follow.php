@@ -53,4 +53,5 @@ class Follow extends \app\core\Controller{
 		$follow->followed_id = $profile_id;
 		return $follow->searchIfFollowed();
 	}
+
 }
