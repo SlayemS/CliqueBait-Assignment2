@@ -1,6 +1,6 @@
 <?php $this->view('shared/header', 'CliqueBait'); ?>
 
-<img class="rounded-circle" src="/images/defaultPFP.png" alt="" style="text-align: right; display:block; margin-top: 25px;" width= '140px'>
+<img class="rounded-circle" src="/images/def_pfp.png" alt="$data's profile" style="text-align: right; display:block; margin-top: 25px;" width= '140px'>
 <h1><?=$data?></h1>
 
 <?php
@@ -17,12 +17,18 @@ if($this->iFollow($data->profile_id) && isset($_SESSION['profile_id']) && $_SESS
 }
 ?>
 
-<h2 style="text-align: center;">Posts</h2>
 <?php
 $publications = $data->getPublications();
-foreach ($publications as $publication) {
-	$this->view('Publication/partial', $publication);
-}
+
+if ($publications) { ?>
+	<h2 style="text-align: center;">Posts</h2>
+
+	<?php foreach ($publications as $publication) {
+		$this->view('Publication/partial', $publication);
+	}
+} else { ?>
+	<h2 style="text-align: center;">This user has no posts</h2>
+<?php }
 ?>
 
 <?php $this->view('shared/footer'); ?>
