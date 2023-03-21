@@ -52,5 +52,4 @@ class Follow extends \app\core\Model {
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Profile');
 		return $STH->fetch();
 	}
-
 }

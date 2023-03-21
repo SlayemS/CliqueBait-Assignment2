@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 01:56 AM
+-- Generation Time: Mar 21, 2023 at 04:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -93,7 +93,8 @@ INSERT INTO `publication` (`publication_id`, `profile_id`, `picture`, `caption`,
 (23, 5, '640f6d109ed00.png', 'Beautiful Tree', '2023-03-13 18:36:00'),
 (24, 5, '640f6d4285f97.jpg', 'The sky is very pretty', '2023-03-13 18:36:50'),
 (25, 4, '640f6d89630a0.jpg', 'Dogs are my favorite', '2023-03-13 18:38:01'),
-(26, 7, '640f6db7987b6.jpg', 'A cute cat meets a girl', '2023-03-13 18:38:47');
+(26, 7, '640f6db7987b6.jpg', 'A cute cat meets a girl', '2023-03-13 18:38:47'),
+(27, 4, '6419c3ddb2ed2.jpg', 'RX-7', '2023-03-21 14:49:01');
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user`
